@@ -8,7 +8,7 @@ router.get('/dashboard',  (req, res) => {
 
 // Homepage Route
 router.get('/', (req, res) => {
-  res.render('homepage', {loggedIn: req.session.loggedIn});
+  res.render('home-page', {loggedIn: req.session.loggedIn});
   });
 
   // Registration Route

@@ -13,19 +13,16 @@ const blogData = require('./blogData.json');
 
 // seed function // 
 const seedDatabase = async() => {
-    // rebuld the full tables //   
-    await sequelize.sync({ force: true });
+    // rebuild the full tables //   
+    await sequelize.sync({ force: true});
 
 
         // bulk create the user table and data //
         await User.bulkCreate(userData, {
-            individualHooks: true,
-            returning: true,
+          individualHooks: true,
           });
     
           await Blog.bulkCreate(blogData, {
-            individualHooks: true,
-            returning: true,
           });
     
         // exit the function process // 
