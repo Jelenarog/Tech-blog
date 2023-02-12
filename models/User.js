@@ -4,9 +4,11 @@ const sequelize = require('../config/connection');
 
 // model // 
 class User extends Model {
+
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
+
 }
 
 // model fields // 
@@ -47,7 +49,7 @@ User.init(
       },
     },
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: 'user',

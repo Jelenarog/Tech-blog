@@ -21,7 +21,7 @@ router.post('/login', async (req, res) => {
       }
   
       const validPassword = dbUserData.checkPassword(req.body.password);
-  
+
       if (!validPassword) {
         res
           .status(400)
@@ -34,16 +34,20 @@ router.post('/login', async (req, res) => {
       req.session.save(() => {
         req.session.loggedIn = true;
         req.session.user= userData;
-        console.log('Save session user and loggedIN',req.session.cookie);
-  
-
-
+        
         res
-        .status(200);
-        // .json({ user: userData.username, message: 'You are now logged in!'});
-        // res.response(200).render('homepage');
-      });
-      // res.render('homepage', {loggedIn: req.session.loggedIn});
+        .status(200)
+        .json({message: 'You are now logged in!'});
+   
+        //res.status(200).render('home-page');
+       }
+      );
+// ***This is working** //
+
+       //.json(dbUserData)
+      //.json({ user: userData.username, message: 'You are now logged in!'});
+      //res.render('home-page',{loggedIn: req.session.loggedIn}); 
+      // );
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
