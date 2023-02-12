@@ -2,8 +2,33 @@ const router = require('express').Router();
 const  {User}  = require('../../models');
 //const withAuth = require('../../utils/auth');//import helper authentication that helps identify if user logged in
 
+// Register new user
 
-// Login
+router.post('/register', async(req, res)=> {
+try{
+  const newUserData = await User.create({
+    username: req.body.username,
+    email:req.body.email,
+    password:req.body.password,
+  })
+
+req.session.save(() => {
+      req.session.loggedIn = true;
+      console.log('New user created')
+       res.status(200).json({message:'New account is successfully created'})
+    });
+
+}
+catch(err){
+  console.log(err)
+  res.status(500).json(err);
+}
+}
+);
+
+
+
+// User login
 router.post('/login', async (req, res) => {
     try {
         
