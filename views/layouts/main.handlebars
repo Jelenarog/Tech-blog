@@ -26,8 +26,11 @@
         <a class="nav-link" id="signoutBtn">Sign out</a>
       </li>
         {{else}}
+         <li class="nav-item"></li>
+        <a class="nav-item nav-link mt-0 tab text-center" href="api/users/register">Register</a>
+       </li>
         <li class="nav-item"></li>
-        <a class="nav-item nav-link mt-0 tab text-center" id="signoutBtn">Log in</a>
+        <a class="nav-item nav-link mt-0 tab text-center" href="api/user/login">Log in</a>
        </li>
         {{/if}}
     </ul>
