@@ -1,11 +1,12 @@
 const path = require('path');
 const express = require('express');
 const session = require('express-session');//package to create session and set cookies
-const sequelize = require('./config/connection'); // import sequelize connection
 const routes = require('./controllers');
 const exphbs = require('express-handlebars');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const hbs = exphbs.create({});
+const sequelize = require('./config/connection'); // import sequelize connection
+const helpers = require('./utils/helper');
+const hbs = exphbs.create({helpers});
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -27,6 +28,8 @@ const sess = {
   //when we create new session it will be stored in db
   store: new SequelizeStore({
     db: sequelize,
+    checkExpirationInterval: 15 * 60 * 1000,
+    expiration: 24 * 60 * 60 * 1000
   }),
 };
 
@@ -35,6 +38,7 @@ app.engine('handlebars',hbs.engine);
 app.set('view engine','handlebars');
 //initialize middleware and passing session var, each time user creates request to our application we will call this middleware
 app.use(session(sess));
+
 
 
 app.use(express.json());

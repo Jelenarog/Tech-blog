@@ -1,0 +1,20 @@
+[
+    {
+
+      "text": "I just learned about this",
+      "blog_id": 1,
+      "user_id": 1
+    },
+    {
+
+        "text": "This is second comment by user2 on third blog post",
+        "blog_id": 3,
+        "user_id": 2
+      },
+      {
+
+        "text": "I just learned about this too",
+        "blog_id": 1,
+        "user_id": 2
+      }
+  ]
