@@ -1,33 +1,34 @@
 const router = require('express').Router();
+const withAuth = require('../utils/auth')
+
 //import models
 const  {User, Blog}  = require('../models');
 
 //Dashboard Route
-router.get('/dashboard',  (req, res) => {
+router.get('/dashboard', withAuth, (req, res) => {
   res.render('dashboard-page', {loggedIn : req.session.loggedIn} ); 
 });
 
 //Home page Route
   router.get('/', async(req, res)=> {
     try{
-      const existingBlogs = await Blog.findAll({
+      const existingPosts= await Blog.findAll({
         raw:true,
         nest: true,
-        include: [
-        {
-            model:User,
-            attributes: {
-              exclude: ['password']
-            }
-        }
-        ]
-
+        // attributes: {
+        //         exclude: ['text', 'createdAt']
+        //       }
+        // include: [
+        // {
+        //     model:User,
+        //     attributes: {
+        //       exclude: ['password']
+        //     }
+        // }
+        // ]
       })
-
-   console.log(existingBlogs);
-
-
-          res.render('home-page', {existingBlogs})
+  
+          res.render('home-page', {existingPosts, loggedIn : req.session.loggedIn})
         
     
     }

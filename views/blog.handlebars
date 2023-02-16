@@ -1,0 +1,14 @@
+
+<div class="blogList">
+{{#each existingCards as |blog|}}
+{{> blog-card}}
+{{/each}}
+</div>
+  
+
+<div> 
+    {{#each blogComments as |comment|}}
+{{> comment-display}}
+{{/each}}
+</div>  
+<script src="/js/blog.js"></script>

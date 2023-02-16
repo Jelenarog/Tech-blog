@@ -27,7 +27,6 @@ catch(err){
 );
 
 
-
 // User login
 router.post('/login', async (req, res) => {
     try {
@@ -60,18 +59,13 @@ router.post('/login', async (req, res) => {
         req.session.loggedIn = true;
         req.session.user= userData;
         
-        res
+         res
         .status(200)
         .json({message: 'You are now logged in!'});
-   
-        //res.status(200).render('home-page');
+        
        }
       );
-// ***This is working** //
-
-       //.json(dbUserData)
-      //.json({ user: userData.username, message: 'You are now logged in!'});
-      //res.render('home-page',{loggedIn: req.session.loggedIn}); 
+  
       // );
     } catch (err) {
       console.log(err);
