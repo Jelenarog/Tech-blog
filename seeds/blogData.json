@@ -7,13 +7,13 @@
       
     },
     {
-        "title": "MVC 2",
-        "text": "MVC allows developers to maintain a true separation of concerns, devising their code between the Model layer data, the View layer for design, and the Controller layer for application logic.",
+        "title": "Authentication vs. Authorization",
+        "text": "There is a difference between authentication and authorization. Authentication means confirming your own identity, whereas authorization means being allowed access to the system.",
         "user_id": 2
     },
     {
-        "title": "MVC 3",
-        "text": "MVC allows developers to maintain a true separation of concerns, devising their code between the Model layer data, the View layer for design, and the Controller layer for application logic.",
+        "title": "Object-Relational Mapping",
+        "text": "I really loved learning ORMs. It's really simplified the way I create queries in SQL.",
         "user_id": 2
     }
   ]

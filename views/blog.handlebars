@@ -1,14 +1,12 @@
 
-<div class="blogList">
+<div class="singleBlog">
 {{#each existingCards as |blog|}}
 {{> blog-card}}
 {{/each}}
-</div>
+</div> 
   
-
-<div> 
-    {{#each blogComments as |comment|}}
+<div id="postedComments">
+{{#each blogComments as |comment|}}
 {{> comment-display}}
 {{/each}}
-</div>  
-<script src="/js/blog.js"></script>
+</div>

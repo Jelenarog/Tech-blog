@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const  {User, Blog, Comment}  = require('../../models');
-
+const withAuth = require('../../utils/auth')
 
 //Find all posts
 
 //Home page Route
-router.get('/:id', async(req, res)=> {
+router.get('/:id', withAuth, async(req, res)=> {
     try{
       const existingCards = await Blog.findAll({
        raw:true,
@@ -29,22 +29,26 @@ router.get('/:id', async(req, res)=> {
         where: { 
           blog_id : req.params.id,
          },
-        // include: [
-        // {
-        //     model:User,
-        //     attributes: {
-        //       exclude: ['password']
-        //     },
-        // }
-        // ]
+        include: [
+        {
+            model:User,
+            attributes: {
+              exclude: ['password']
+            },
+        }
+        ]
       })
       console.log(blogComments);
    //console.log(existingCards);
 
 //res.status(200);
-        res.render('blog', {existingCards, blogComments, loggedIn : req.session.loggedIn})
+        res.render('blog',  {existingCards, blogComments, loggedIn : req.session.loggedIn})
         
     
+
+
+
+        
     }
     catch(err){
       console.log(err)

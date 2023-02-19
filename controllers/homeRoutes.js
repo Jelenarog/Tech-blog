@@ -39,11 +39,10 @@ router.get('/dashboard', withAuth, (req, res) => {
     }
     );
 
+    router.get('/commenting',  (req, res) => {
+      res.render('comment-page'); 
+    });
 
-// // Homepage Route
-// router.get('/', (req, res) => {
-//   res.render('home-page', {loggedIn: req.session.loggedIn});
-//   });
 
   // Registration Route
 router.get('/register',  (req, res) => {
