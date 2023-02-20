@@ -46,7 +46,7 @@ const submitBlogHandler = async (e) => {
 const editBlogHandler = async (e) => {
   e.preventDefault();
   console.log(e.target.id)
- // e.target.getAttribute("blog-id")
+ console.log(e.target.getAttribute("blog-id"));
   const blogTitle = document.querySelector("#blogTitle").value.trim();
   const blogText = document.querySelector("#blogText").value.trim();
 
