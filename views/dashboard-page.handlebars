@@ -5,12 +5,12 @@
 <div class= "singleBlog m-5 ">
 {{#each userBlogs as |blog|}}
 {{> blog-card}}
-</div>
-
 {{!-- </div> --}}
-{{/each}}
-{{!-- </div>  --}}
 
+
+{{/each}}
+</div> 
+</div>
 {{! Enter new blog }}
 <div id="newBlog" style="display:none">
   <section style="background-color: #eee;">
@@ -65,10 +65,9 @@
     </div>
   </section>
 </div>
-{{else}}
-<p>Test</p>
+<script src="/js/dashboard.js"></script>
 {{/if}}
 
-<script src="/js/dashboard.js"></script>
+
 
 
