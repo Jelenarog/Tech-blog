@@ -1,25 +1,35 @@
 //** Post new comment**/
 
-const btn = document.querySelector("#commentBtn");
+const newCommentBtn = document.querySelector("#commentBtn");
 const postComment = document.querySelector("#postComment");
+const cancelBtn = document.querySelector("#cancelComment");
 const card = document.querySelector(".card");
+document.querySelector("#editBlogBtn").style.display = "none";
 
+//on click of leave comment button hide all comments and display comment input section
 const openComment = async (e) => {
   e.preventDefault();
   document.querySelector("#leaveComment").style.display = "";
   document.querySelector("#postedComments").style.display = "none";
-
+  document.querySelector("#commentBtn").style.display = "none";
 };
 
+//cancel comment input
+const cancelComment = async (e) => {
+  e.preventDefault();
+  document.querySelector("#commentBtn").style.display = "";
+  document.querySelector("#leaveComment").style.display = "none";
+  document.querySelector("#postedComments").style.display = "";
+};
+
+//save new comment 
 const submitCommentHandler = async (e) => {
   e.preventDefault();
   const userComment = document.querySelector("#userComment").value.trim();
   const blog_id = parseInt(e.target.getAttribute("blog-id")); 
 
   if (userComment && blog_id) {
-    //console.log(e.target.getAttribute("blog-id"));
-    
-    const response = await fetch(`/api/comment/saveComment`, {
+    const response = await fetch(`/api/comment/save`, {
       method: "POST",
       body: JSON.stringify({ userComment, blog_id }),
       headers: { "Content-Type": "application/json" },
@@ -30,5 +40,9 @@ const submitCommentHandler = async (e) => {
   }
 };
 
-btn.addEventListener("click", openComment);
+
+
+
+newCommentBtn.addEventListener("click", openComment);
+cancelBtn.addEventListener("click", cancelComment);
 postComment.addEventListener("click", submitCommentHandler);

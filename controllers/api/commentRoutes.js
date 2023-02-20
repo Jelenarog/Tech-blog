@@ -4,6 +4,7 @@ const  {User, Blog, Comment}  = require('../../models');
 
 //Find all comments for blog selected by user
 router.get('/:id', async(req, res)=> {
+  console.log(req.session);
     try{
       const existingCards = await Blog.findAll({
        raw:true,
@@ -20,7 +21,6 @@ router.get('/:id', async(req, res)=> {
         }
         ]
       })
-      console.log(req.params.id);
       const blogComments = await Comment.findAll({
         raw:true,
         nest: true,
@@ -37,7 +37,7 @@ router.get('/:id', async(req, res)=> {
         ]
       })
 
-
+      
  //Grab user info excluding password
  const userData =  await User.findAll({
   raw:true,
@@ -47,10 +47,10 @@ router.get('/:id', async(req, res)=> {
     exclude: ['password']
   }
 });
-const user = userData[0];
+const currentUser = userData[0];
+console.log(userData);
 
-
-      res.render('blog', {existingCards, user, blogComments,loggedIn : req.session.loggedIn})
+      res.render('home-page', {existingCards, currentUser, blogComments,loggedIn : req.session.loggedIn})
     }
     catch(err){
       console.log(err)
@@ -66,8 +66,8 @@ const user = userData[0];
 //   });
 
 
-// Find all comments for one blog
-    router.post('/saveComment', async(req, res)=> {
+// Post comments 
+    router.post('/save', async(req, res)=> {
       try{
         const newComment = await Comment.create({
           blog_id : req.body.blog_id,

@@ -1,48 +1,125 @@
-<div class="col-sm-6 mb-3 mb-sm-5 commentList"  >
- 
- <div class="card" >
-     <div class="card-header">
-     {{title}}
-     </div>
-     <div class="card-body" >
+{{! Display selected blog }}
+<div class="col-sm-6 mb-3 commentList">
+  <div class="card">
+    <div class="card-header">
+      {{title}}
+    </div>
+    <div class="card-body">
       <p>{{text}}</p>
-      <footer class="blockquote-footer">Posted by {{user.username}},<cite title="Source Title"> on {{format_date createdAt}} </cite></footer>
-    </div>
-     <button type="click" class="btn btn-secondary"  id="commentBtn">Click here to leave a comment.</button>
-    </div>
-</div>
-<div id="leaveComment" style="display:none">
- <section style="background-color: #eee;">
-  <div class="container my-5 py-5">
-    <div class="row d-flex justify-content-center">
-      <div class="col-md-12 col-lg-10 col-xl-8">
-        <div class="card">
-          <div class="card-body">
-            <div class="d-flex flex-start align-items-center">
+      <footer class="blockquote-footer">Posted by
+        {{user.username}},<cite title="Source Title">
+          on
+          {{format_date createdAt}}
+        </cite></footer>
 
-              <div>
-                <h6 class="fw-bold text-primary mb-1">{{user.username}}</h6>
+    </div>
+      <button type="click" class="btn btn-secondary" id="editBlogBtn">Click here to
+        edit this blog</button>
+  </div>
+
+</div>
+{{! Enter new comment }}
+<div id="leaveComment" style="display:none">
+  <section style="background-color: #eee;">
+    <div class="container my-5 py-5">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-12 col-lg-10 col-xl-8">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex flex-start align-items-center">
+
+                <div>
+                  <h6
+                    class="fw-bold text-primary mb-1"
+                  ></h6>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
-            <div class="d-flex flex-start w-100">
-            
-              <div class="form-outline w-100">
-                <textarea class="form-control" id="userComment" rows="4"
-                  style="background: #fff;" placeholder="Enter your comment here..."></textarea>
+            <div
+              class="card-footer py-3 border-0"
+              style="background-color: #f8f9fa;"
+            >
+              <div class="d-flex flex-start w-100">
+
+                <div class="form-outline w-100">
+                  <textarea
+                    class="form-control"
+                    id="userComment"
+                    rows="4"
+                    style="background: #fff;"
+                    placeholder="Enter your comment here..."
+                  ></textarea>
+                </div>
               </div>
-            </div>
-            <div class="float-end mt-2 pt-1">
-              <button blog-id={{blog_id}} id="postComment" class="btn btn-secondary btn-sm">Post comment</button>
-              <button type="cancelComment" class="btn btn-outline-secondary btn-sm">Cancel</button>
+              <div class="float-end mt-2 pt-1">
+                <button
+                  blog-id={{blog_id}}
+                  id="postComment"
+                  class="btn btn-secondary btn-sm"
+                >Post comment</button>
+                <button
+                  id="cancelComment"
+                  class="btn btn-outline-secondary btn-sm"
+                >Cancel</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
- </section>
- </div>
+  </section>
+</div>
+{{! Enter new blog }}
+<div id="newBlog" style="display:none">
+  <section style="background-color: #eee;">
+    <div class="container my-5 py-5">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-12 col-lg-10 col-xl-8">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex flex-start align-items-center">
 
-  <script src="/js/comment.js"></script>
+                <div>
+                <input
+                    class="form-control"
+                    id="blogTitle"
+                    rows="4"
+                    style="background: #fff;"
+                    placeholder="Blog title"
+                  ></input>
+                </div>
+              </div>
+            </div>
+            <div
+              class="card-footer py-3 border-0"
+              style="background-color: #f8f9fa;"
+            >
+              <div class="d-flex flex-start w-100">
+
+                <div class="form-outline w-100">
+                  <textarea
+                    class="form-control"
+                    id="blogText"
+                    rows="4"
+                    style="background: #fff;"
+                    placeholder="Enter your text here..."
+                  ></textarea>
+                </div>
+              </div>
+              <div class="float-end mt-2 pt-1">
+                <button
+                  id="postComment"
+                  class="btn btn-secondary btn-sm"
+                >Post blog</button>
+                <button
+                  id="cancelComment"
+                  class="btn btn-outline-secondary btn-sm"
+                >Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

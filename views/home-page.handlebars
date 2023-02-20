@@ -1,9 +1,27 @@
-
+{{!-- Display all blog posts --}}
+{{#if existingPosts}}
 <div class="blogList m-5">
 {{#each existingPosts as |post|}}
 {{> allblog-post}}
 {{/each}}
+ <script src="/js/blog.js"></script>
 </div>
 
+{{!-- DIsplay only one blog  and its comments--}}
+{{else}}
+  <button type="button" id="commentBtn" class="btn btn-secondary ml-5 my-4
+ px-3">Click here to leave a comment</button>
+<div class= " singleBlog m-5 ">
+{{#each existingCards as |blog|}}
+{{> blog-card}}
+{{/each}}
 
-
+<div  class="shadow-lg col-lg-6 py-2 mx-3 flex-wrap" id="postedComments" >
+    <p class=" text-secondary text-center">Comments: </p>
+{{#each blogComments as |comment|}}
+{{> comment-display}}
+{{/each}}
+</div>
+</div> 
+ <script src="/js/comment.js"></script>
+{{/if}}

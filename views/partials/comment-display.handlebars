@@ -1,14 +1,14 @@
-<div class="col-sm-6 mb-3 mb-sm-5 targetBlog"  >
+{{!-- Display comments --}}
+
+<div class="col-sm-6 mb-3 mb-sm-2 targetBlog"  >
  
- <div class="card">
+ <div class="card ">
      <div class="card-header" id={{blog_id}}>
-     
      </div>
-    <div class="card-body">
-      <p>{{text}}</p>
-      <footer class="blockquote-footer">Posted by {{user.username}}<cite title="Source Title"> on {{format_date createdAt}} </cite></footer>
+    <div class="card-body pb-1 " >
+      <p >{{text}}</p>
+      <p>Posted by {{user.username}}<cite title="Source Title"> on {{format_date createdAt}} <p>
     </div>
   </div>
 </div>
 
- {{!-- <script src="/js/blog.js"></script> --}}

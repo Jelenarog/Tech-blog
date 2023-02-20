@@ -7,11 +7,46 @@
      {{title}}
    </div>
    <div class="card-body">
-
+   <p>{{text}}</p>
    <footer class="blockquote-footer"><cite title="Source Title">Posted on {{format_date createdAt}}</cite></footer>
    
    </div>
   </div>
 </div>
 
- <script src="/js/blog.js"></script>
+{{!-- Enter new comment --}}
+<div id="createBlog" style="display:none">
+ <section style="background-color: #eee;">
+  <div class="container my-5 py-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-12 col-lg-10 col-xl-8">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex flex-start align-items-center">
+
+              <div>
+                <h6 class="fw-bold text-primary mb-1">{{currentUser.username}}</h6>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+            <div class="d-flex flex-start w-100">
+            
+              <div class="form-outline w-100">
+                <textarea class="form-control" id="userComment" rows="4"
+                  style="background: #fff;" placeholder="Enter your comment here..."></textarea>
+              </div>
+            </div>
+            <div class="float-end mt-2 pt-1">
+              <button blog-id={{blog_id}} id="postComment" class="btn btn-secondary btn-sm">Post comment</button>
+              <button id="cancelComment" class="btn btn-outline-secondary btn-sm">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ </section>
+ </div>
+
+
