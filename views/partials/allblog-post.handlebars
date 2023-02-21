@@ -1,4 +1,4 @@
-{{!-- Selected blog posts --}}
+{{!-- Display all blogs --}}
 
 <div class="col-sm-6 mb-3 mb-sm-5 targetBlog"  >
  
@@ -8,7 +8,7 @@
    </div>
    <div class="card-body">
    <p>{{text}}</p>
-   <footer class="blockquote-footer"><cite title="Source Title">Posted on {{format_date createdAt}}</cite></footer>
+   <footer class="blockquote-footer"><cite title="Source Title">Posted by {{user.username}} on {{format_date createdAt}}</cite></footer>
    
    </div>
   </div>

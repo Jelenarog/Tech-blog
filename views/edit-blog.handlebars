@@ -1,17 +1,4 @@
-{{#if userBlogs}}
-<button type="button" id="newBlogBtn" class="btn btn-secondary ml-5 my-4
- px-3">Click here to add a new blog post</button>
-
-<div class= "singleBlog m-5 ">
-{{#each userBlogs as |blog|}}
-{{> blog-card}}
-{{!-- </div> --}}
-{{/each}}
-</div> 
-</div>
-
-{{! Enter new blog }}
-<div id="newBlog" style="display:none">
+<div class="editBlog">
   <section style="background-color: #eee;">
     <div class="container my-5 py-5">
       <div class="row d-flex justify-content-center">
@@ -19,14 +6,13 @@
           <div class="card">
             <div class="card-body">
               <div class="d-flex flex-start align-items-center">
-
                 <div>
                 <input
                     class="form-control"
-                    id="blogTitle"
+                    id="title"
                     rows="4"
                     style="background: #fff;"
-                    placeholder="Blog title"
+                    value="{{title}}"
                   ></input>
                 </div>
               </div>
@@ -40,20 +26,20 @@
                 <div class="form-outline w-100">
                   <textarea
                     class="form-control"
-                    id="blogText"
+                    id="text"
                     rows="4"
                     style="background: #fff;"
-                    placeholder="Enter your text here..."
+                   value="{{text}}"
                   ></textarea>
                 </div>
               </div>
               <div class="float-end mt-2 pt-1">
                 <button
-                  id="postBlog"
+                  id="post"
                   class="btn btn-secondary btn-sm"
                 >Post blog</button>
                 <button
-                  id="cancelBlog"
+                  id="cancel"
                   class="btn btn-outline-secondary btn-sm"
                 >Cancel</button>
               </div>
@@ -64,12 +50,3 @@
     </div>
   </section>
 </div>
-<div>
-
-
-</div>
-{{/if}}
-<script src="/js/dashboard.js"></script>
-
-
-

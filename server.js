@@ -28,8 +28,8 @@ const sess = {
   //when we create new session it will be stored in db
   store: new SequelizeStore({
     db: sequelize,
-    // checkExpirationInterval: 15 * 60 * 1000,
-    // expiration: 24 * 60 * 60 * 1000
+    checkExpirationInterval: 15 * 60 * 1000,
+    expiration: 24 * 60 * 60 * 1000
   }),
 };
 

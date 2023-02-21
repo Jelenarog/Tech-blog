@@ -17,15 +17,15 @@ router.get("/", async (req, res) => {
       nest: true,
       attributes: {
               exclude: ['text']
-            }
-      // include: [
-      // {
-      //     model:User,
-      //     attributes: {
-      //       exclude: ['password']
-      //     }
-      // }
-      // ]
+            },
+      include: [
+      {
+          model:User,
+          attributes: {
+            exclude: ['password']
+          }
+      }
+      ]
     });
 
     res.render("home-page", { existingPosts, loggedIn: req.session.loggedIn });
