@@ -3,7 +3,7 @@
 const newBlogBtn = document.querySelector("#newBlogBtn");
 const postBlog= document.querySelector("#postBlog");
 const cancelBlogBtn = document.querySelector("#cancelBlog");
-const editBlogBtn = document.querySelector("#editBlogBtn");
+//const editBlogBtn = document.querySelector("#editBlogBtn");
 const editBlog = document.querySelector(".singleBlog");
 
 //on click of leave comment button hide all comments and display comment input section
@@ -41,27 +41,27 @@ const submitBlogHandler = async (e) => {
   }
 };
 
-//edit blog 
+// //edit blog 
 
-const editBlogHandler = async (e) => {
-  console.log(e.target.getAttribute("blog-id"))
-  e.preventDefault();
-  // document.querySelector(".singleBlog").style.display = "none";
-  // document.querySelector(".editBlog").style.display = "";
-  // document.querySelector("#editBlogBtn").style.display = "none";
-  const blog_id =parseInt(e.target.getAttribute("blog-id")); 
-  // const blogTitle = document.querySelector("#blogTitle").value.trim();
-  // const blogText = document.querySelector("#blogText").value.trim();
-  const response = await fetch(`/api/dashboard/edit/${blog_id}`, {
-    method: 'GET', 
-    headers: { 'Content-Type': 'application/json'},
-});
- if (response.ok) {
+// const editBlogHandler = async (e) => {
+//   console.log(e.target.getAttribute("blog-id"))
+//   e.preventDefault();
+//   document.querySelector(".singleBlog").style.display = "none";
+//  // document.querySelector("#newBlog").style.display = "";
+//   //document.querySelector("#editBlogBtn").style.display = "none";
+//   const blog_id =parseInt(e.target.getAttribute("blog-id")); 
+//   // const blogTitle = document.querySelector("#blogTitle").value.trim();
+//   // const blogText = document.querySelector("#blogText").value.trim();
+//   const response = await fetch(`/api/dashboard/edit/${blog_id}`, {
+//     method: 'GET', 
+//     headers: { 'Content-Type': 'application/json'},
+// });
+//  if (response.ok) {
  
-console.log('ok')
- document.location.replace(`/api/dashboard/edit/${blog_id}`);
-   };
-};  
+// console.log(response)
+//  document.location.replace(`/api/dashboard/edit/${blog_id}`);
+//    };
+// };  
 
 
 
@@ -89,4 +89,4 @@ console.log('ok')
 newBlogBtn.addEventListener("click", startBlog);
 cancelBlogBtn.addEventListener("click", cancelBlog);
 postBlog.addEventListener("click", submitBlogHandler);
-editBlog.addEventListener("click", editBlogHandler);
+// editBlog.addEventListener("click", editBlogHandler);

@@ -27,6 +27,7 @@
                     rows="4"
                     style="background: #fff;"
                     placeholder="Blog title"
+                    value="{{title}}"
                   ></input>
                 </div>
               </div>
@@ -44,7 +45,7 @@
                     rows="4"
                     style="background: #fff;"
                     placeholder="Enter your text here..."
-                  ></textarea>
+                  >{{text}}</textarea>
                 </div>
               </div>
               <div class="float-end mt-2 pt-1">
@@ -64,12 +65,24 @@
     </div>
   </section>
 </div>
-<div>
-
-
-</div>
-{{/if}}
 <script src="/js/dashboard.js"></script>
+{{else}}
 
+{{#each editBlog as |edit|}}
+{{> edit-blog}}
+
+{{/each}}
+
+
+{{!-- {{/if}} --}}
+
+{{!-- {{#if editBlog}}
+{{#each editBlog as |edit|}}
+{{> edit-blog}}
+
+{{/each}} --}}
+ {{/if}}
+
+<script src="/js/editBlog.js"></script>
 
 

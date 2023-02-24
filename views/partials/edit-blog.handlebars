@@ -1,4 +1,6 @@
-<div class="editBlog">
+
+
+ <div class="editBlog">
   <section style="background-color: #eee;">
     <div class="container my-5 py-5">
       <div class="row d-flex justify-content-center">
@@ -23,25 +25,29 @@
             >
               <div class="d-flex flex-start w-100">
 
-                <div class="form-outline w-100">
-                  <textarea
+                <div class="form-outline w-100 "style="height: 200px">
+                  <input
                     class="form-control"
                     id="text"
                     rows="4"
                     style="background: #fff;"
                    value="{{text}}"
-                  ></textarea>
+                  ></input>
                 </div>
               </div>
               <div class="float-end mt-2 pt-1">
                 <button
-                  id="post"
-                  class="btn btn-secondary btn-sm"
+                  id="postEdit"
+                  class="postEdit btn btn-secondary btn-sm"
                 >Post blog</button>
                 <button
-                  id="cancel"
+                  id="cancelEdit"
                   class="btn btn-outline-secondary btn-sm"
                 >Cancel</button>
+                   <button
+                  id="delete"
+                  class="btn btn-outline-secondary btn-sm"
+                >Delete</button>
               </div>
             </div>
           </div>
@@ -49,4 +55,4 @@
       </div>
     </div>
   </section>
-</div>
+</div>  
