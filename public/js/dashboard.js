@@ -5,6 +5,8 @@ const postBlog= document.querySelector("#postBlog");
 const cancelBlogBtn = document.querySelector("#cancelBlog");
 //const editBlogBtn = document.querySelector("#editBlogBtn");
 const editBlog = document.querySelector(".singleBlog");
+//const editBlogBtn = document.querySelector("#editBlogBtn");
+
 
 //on click of leave comment button hide all comments and display comment input section
 const startBlog = async (e) => {
@@ -41,45 +43,23 @@ const submitBlogHandler = async (e) => {
   }
 };
 
-// //edit blog 
 
-// const editBlogHandler = async (e) => {
-//   console.log(e.target.getAttribute("blog-id"))
-//   e.preventDefault();
-//   document.querySelector(".singleBlog").style.display = "none";
-//  // document.querySelector("#newBlog").style.display = "";
-//   //document.querySelector("#editBlogBtn").style.display = "none";
-//   const blog_id =parseInt(e.target.getAttribute("blog-id")); 
-//   // const blogTitle = document.querySelector("#blogTitle").value.trim();
-//   // const blogText = document.querySelector("#blogText").value.trim();
-//   const response = await fetch(`/api/dashboard/edit/${blog_id}`, {
-//     method: 'GET', 
-//     headers: { 'Content-Type': 'application/json'},
-// });
-//  if (response.ok) {
- 
-// console.log(response)
-//  document.location.replace(`/api/dashboard/edit/${blog_id}`);
-//    };
-// };  
+//open blog edit
+const openEditBlog = async (e) => {
+  e.preventDefault();
+  const blog_id = e.target.getAttribute("blog-id");
+ if( blog_id){
+  const response = await fetch(`/api/dashboard/edit/${blog_id}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  if (response.ok) {
+    document.location.replace(`/api/dashboard/edit/${blog_id}`);
+  }
+};
+}
 
 
-
-  // if (blogTitle && blogText) {
-  //   const response = await fetch(`/api/blog/save/${blog_id}`, {
-  //     method: "POST",
-  //     body: JSON.stringify({ blogTitle, blogText }),
-  //     headers: { "Content-Type": "application/json" },
-  //   });
-  //   if (response.ok) {
-  //     document.location.replace(`/api/dashboard/`); 
-  //   }
-  // }
-
-
-
-
-//delete blog 
 
 
 
@@ -89,4 +69,4 @@ const submitBlogHandler = async (e) => {
 newBlogBtn.addEventListener("click", startBlog);
 cancelBlogBtn.addEventListener("click", cancelBlog);
 postBlog.addEventListener("click", submitBlogHandler);
-// editBlog.addEventListener("click", editBlogHandler);
+editBlog.addEventListener("click", openEditBlog);
