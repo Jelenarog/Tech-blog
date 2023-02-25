@@ -61,9 +61,9 @@ Deployed website: https://serene-bayou-31049.herokuapp.com/
 ___
 Homepage
 
-![Home-page](./public/images/Home-page.png)
+![Home-page](./public/Images/Home-page.png)
 
 Dashboard
 
-![Dashboard](./public/images/Dashboard.png)
+![Dashboard](./public/Images/Dashboard.png)
 
