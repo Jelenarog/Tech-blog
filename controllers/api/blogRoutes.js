@@ -49,7 +49,7 @@ router.get("/:id", withAuth, async (req, res) => {
 });
 
 //Create new blog
-router.post("/save", async (req, res) => {
+router.post("/save", withAuth, async (req, res) => {
   try {
     const newBlog = await Blog.create({
       title: req.body.blogTitle,
@@ -85,7 +85,7 @@ router.put("/edit/:id", withAuth, async (req, res) => {
 });
 
 // delete existing blog
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/delete/:id", withAuth, async (req, res) => {
   try {
     const deleteBlog = await Blog.destroy({
       where: {
