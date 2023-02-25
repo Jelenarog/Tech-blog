@@ -22,28 +22,19 @@ router.get("/", withAuth, async (req, res) => {
 //Finding one blog that belong to user
 router.get("/edit/:id", withAuth, async (req, res) => {
   try {
-    const editBlog= await Blog.findAll({
+    const editBlog = await Blog.findAll({
       raw: true,
-      nest:true,
+      nest: true,
       where: {
         blog_id: req.params.id,
       },
-
     });
-   console.log(editBlog)
-   
-   res.render("dashboard-page", { editBlog, loggedIn: req.session.loggedIn });
+
+    res.render("dashboard-page", { editBlog, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
-
-
-
-
-
-
-
 
 module.exports = router;

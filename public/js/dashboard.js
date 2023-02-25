@@ -3,9 +3,7 @@
 const newBlogBtn = document.querySelector("#newBlogBtn");
 const postBlog= document.querySelector("#postBlog");
 const cancelBlogBtn = document.querySelector("#cancelBlog");
-//const editBlogBtn = document.querySelector("#editBlogBtn");
 const editBlog = document.querySelector(".singleBlog");
-//const editBlogBtn = document.querySelector("#editBlogBtn");
 
 
 //on click of leave comment button hide all comments and display comment input section
