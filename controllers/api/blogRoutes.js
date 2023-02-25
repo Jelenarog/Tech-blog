@@ -68,11 +68,45 @@ router.post("/save", async (req, res) => {
 });
 
 
-//Find selected blog 
 
+//Update existing blog
+router.put("/edit/:id", withAuth, async (req, res) => {
+  try {
+    const editedBlog= await Blog.update({
+    title: req.body.title,
+    text: req.body.text
+    },
+    {
+    where: {
+        blog_id: req.params.id,
+      },  
+  }
+  );
+   console.log(editedBlog)
+   
+   res.status(200).json(editedBlog);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
-
-
+  // delete route
+router.delete('/delete/:id', async(req, res) => {
+try{
+const deleteBlog = await Blog.destroy({
+  where:{
+    id: req.params.id
+  }
+},
+)
+res.json(deleteBlog)
+//res.response(200)
+}
+catch(err){
+    res.status(400).json(err);
+  }
+});
 
 
 module.exports = router;

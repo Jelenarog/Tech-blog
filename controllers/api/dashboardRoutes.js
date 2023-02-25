@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { User, Blog, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-//Home page Route
+//Dashboard page rendering all blog posts for logged in user
 router.get("/", withAuth, async (req, res) => {
   console.log(req.session.user.dataValues.user_id);
   try {
@@ -38,5 +38,12 @@ router.get("/edit/:id", withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
+
+
+
+
+
 
 module.exports = router;

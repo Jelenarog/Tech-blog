@@ -2,41 +2,52 @@ const editBlogBtn = document.querySelector("#editBlogBtn");
 const postEditBtn = document.querySelector("#postEdit");
 const cancelEditBtn = document.querySelector("#cancelEdit");
 const deleteBlogBtn = document.querySelector("#delete");
+const blogId = document.querySelector('.editBlog').getAttribute("blog-id");
 
-//edit blog
+//cancel edit blog button
+const cancelChangeHandler = async (e) =>{
+  document.location.replace(`/api/dashboard/`); 
+}
 
+//cancel edit blog button
+const deleteBlogHandler = async (e) =>{
+  e.preventDefault();
+  const response = await fetch(`/api/blog/delete/${blogId}`, {
+    method: 'POST',
+    //body: JSON.stringify ({ exerciseId }),
+    headers: { 'Content-Type': 'application/json'},
+});
+
+if(response.ok) {
+  document.location.replace(`/api/dashboard/`);
+}
+}
+
+//edit existing blog
 const updateBlogHandler = async (e) => {
   e.preventDefault();
-  // console.log(e.target.id)
-  console.log("button works");
-  //  if(e.target.id){
-  //   const blog_id = parseInt(e.target.id);
+  const title = document.querySelector("#title").value.trim();
+  const text = document.querySelector("#text").value.trim();
 
-  //   const response = await fetch(`/api/blog/${blog_id}`, {
-  //             method: 'PUT',
-  //             headers: { 'Content-Type': 'application/json'},
-  //         });
-  //          if (response.ok) {
-  //           console.log('fetching worked');
-  //           document.location.replace(`/api/blog/${blog_id}`);
-  //            };
-  // };
+  if (title || text) {
+    const response = await fetch(`/api/blog/edit/${blogId}`, {
+      method: "PUT",
+      body: JSON.stringify({ title, text }),
+      headers: { "Content-Type": "application/json" },
+
+
+    });
+    console.log(response)
+   if (response.ok) {
+    document.location.replace(`/api/dashboard/`); 
+  }
+  }
+ 
+
 };
 
-//open blog edit
-// const openEditBlog = async (e) => {
-//   console.log(e.target.getAttribute("blog-id"));
-//   e.preventDefault();
-//   console.log("open edit");
-//   const blog_id = e.target.getAttribute("blog-id");
-//   const response = await fetch(`/api/dashboard/edit/${blog_id}`, {
-//     method: "GET",
-//     headers: { "Content-Type": "application/json" },
-//   });
-//   if (response.ok) {
-//     document.location.replace(`/api/dashboard/edit/${blog_id}`);
-//   }
-// };
 
-// editBlogBtn.addEventListener("click", openEditBlog);
+
 postEditBtn.addEventListener("click", updateBlogHandler);
+cancelEditBtn.addEventListener("click", cancelChangeHandler);
+deleteBlogBtn.addEventListener("click", deleteBlogHandler);
