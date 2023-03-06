@@ -14,6 +14,7 @@ router.post("/register", async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.user = userData;
       console.log("New user created");
       res.status(200).json({ message: "New account is successfully created" });
     });
